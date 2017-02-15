@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xin.fallen.dao.ItemComment01Mapper" >
+  <resultMap id="BaseResultMap" type="xin.fallen.bean.ItemComment01" >
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="reference_id" property="referenceId" jdbcType="VARCHAR" />
+    <result column="score_level" property="scoreLevel" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="user_image" property="userImage" jdbcType="VARCHAR" />
+    <result column="useful_vote_count" property="usefulVoteCount" jdbcType="INTEGER" />
+    <result column="user_provice" property="userProvice" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="product_color" property="productColor" jdbcType="VARCHAR" />
+    <result column="product_size" property="productSize" jdbcType="VARCHAR" />
+    <result column="user_level_name" property="userLevelName" jdbcType="VARCHAR" />
+    <result column="user_client_show" property="userClientShow" jdbcType="VARCHAR" />
+    <result column="HD_images" property="hdImages" jdbcType="VARCHAR" />
+    <result column="thumbnails" property="thumbnails" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, reference_id, score_level, content, create_time, score, user_image, useful_vote_count, 
+    user_provice, nickname, product_color, product_size, user_level_name, user_client_show, 
+    HD_images, thumbnails
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from item_comment01
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from item_comment01
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="xin.fallen.bean.ItemComment01" >
+    insert into item_comment01 (comment_id, reference_id, score_level, 
+      content, create_time, score, 
+      user_image, useful_vote_count, user_provice, 
+      nickname, product_color, product_size, 
+      user_level_name, user_client_show, HD_images, 
+      thumbnails)
+    values (#{commentId,jdbcType=VARCHAR}, #{referenceId,jdbcType=VARCHAR}, #{scoreLevel,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, 
+      #{userImage,jdbcType=VARCHAR}, #{usefulVoteCount,jdbcType=INTEGER}, #{userProvice,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{productColor,jdbcType=VARCHAR}, #{productSize,jdbcType=VARCHAR}, 
+      #{userLevelName,jdbcType=VARCHAR}, #{userClientShow,jdbcType=VARCHAR}, #{hdImages,jdbcType=VARCHAR}, 
+      #{thumbnails,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xin.fallen.bean.ItemComment01" >
+    insert into item_comment01
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="referenceId != null" >
+        reference_id,
+      </if>
+      <if test="scoreLevel != null" >
+        score_level,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="userImage != null" >
+        user_image,
+      </if>
+      <if test="usefulVoteCount != null" >
+        useful_vote_count,
+      </if>
+      <if test="userProvice != null" >
+        user_provice,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="productColor != null" >
+        product_color,
+      </if>
+      <if test="productSize != null" >
+        product_size,
+      </if>
+      <if test="userLevelName != null" >
+        user_level_name,
+      </if>
+      <if test="userClientShow != null" >
+        user_client_show,
+      </if>
+      <if test="hdImages != null" >
+        HD_images,
+      </if>
+      <if test="thumbnails != null" >
+        thumbnails,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceId != null" >
+        #{referenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreLevel != null" >
+        #{scoreLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="userImage != null" >
+        #{userImage,jdbcType=VARCHAR},
+      </if>
+      <if test="usefulVoteCount != null" >
+        #{usefulVoteCount,jdbcType=INTEGER},
+      </if>
+      <if test="userProvice != null" >
+        #{userProvice,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="productColor != null" >
+        #{productColor,jdbcType=VARCHAR},
+      </if>
+      <if test="productSize != null" >
+        #{productSize,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevelName != null" >
+        #{userLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="userClientShow != null" >
+        #{userClientShow,jdbcType=VARCHAR},
+      </if>
+      <if test="hdImages != null" >
+        #{hdImages,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnails != null" >
+        #{thumbnails,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.bean.ItemComment01" >
+    update item_comment01
+    <set >
+      <if test="referenceId != null" >
+        reference_id = #{referenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreLevel != null" >
+        score_level = #{scoreLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="userImage != null" >
+        user_image = #{userImage,jdbcType=VARCHAR},
+      </if>
+      <if test="usefulVoteCount != null" >
+        useful_vote_count = #{usefulVoteCount,jdbcType=INTEGER},
+      </if>
+      <if test="userProvice != null" >
+        user_provice = #{userProvice,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="productColor != null" >
+        product_color = #{productColor,jdbcType=VARCHAR},
+      </if>
+      <if test="productSize != null" >
+        product_size = #{productSize,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevelName != null" >
+        user_level_name = #{userLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="userClientShow != null" >
+        user_client_show = #{userClientShow,jdbcType=VARCHAR},
+      </if>
+      <if test="hdImages != null" >
+        HD_images = #{hdImages,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnails != null" >
+        thumbnails = #{thumbnails,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.fallen.bean.ItemComment01" >
+    update item_comment01
+    set reference_id = #{referenceId,jdbcType=VARCHAR},
+      score_level = #{scoreLevel,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      user_image = #{userImage,jdbcType=VARCHAR},
+      useful_vote_count = #{usefulVoteCount,jdbcType=INTEGER},
+      user_provice = #{userProvice,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      product_color = #{productColor,jdbcType=VARCHAR},
+      product_size = #{productSize,jdbcType=VARCHAR},
+      user_level_name = #{userLevelName,jdbcType=VARCHAR},
+      user_client_show = #{userClientShow,jdbcType=VARCHAR},
+      HD_images = #{hdImages,jdbcType=VARCHAR},
+      thumbnails = #{thumbnails,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+</mapper>

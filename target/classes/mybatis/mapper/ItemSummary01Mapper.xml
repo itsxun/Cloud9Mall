@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xin.fallen.dao.ItemSummary01Mapper" >
+  <resultMap id="BaseResultMap" type="xin.fallen.bean.ItemSummary01" >
+    <id column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="good_rate_show" property="goodRateShow" jdbcType="REAL" />
+    <result column="general_rate_show" property="generalRateShow" jdbcType="REAL" />
+    <result column="poor_rate_show" property="poorRateShow" jdbcType="REAL" />
+    <result column="comment_count" property="commentCount" jdbcType="INTEGER" />
+    <result column="good_count" property="goodCount" jdbcType="INTEGER" />
+    <result column="general_count" property="generalCount" jdbcType="INTEGER" />
+    <result column="poor_count" property="poorCount" jdbcType="INTEGER" />
+    <result column="comment_table_name" property="commentTableName" jdbcType="VARCHAR" />
+    <result column="hot_tag" property="hotTag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    item_id, good_rate_show, general_rate_show, poor_rate_show, comment_count, good_count, 
+    general_count, poor_count, comment_table_name, hot_tag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from item_summary01
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from item_summary01
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="xin.fallen.bean.ItemSummary01" >
+    insert into item_summary01 (item_id, good_rate_show, general_rate_show, 
+      poor_rate_show, comment_count, good_count, 
+      general_count, poor_count, comment_table_name, 
+      hot_tag)
+    values (#{itemId,jdbcType=VARCHAR}, #{goodRateShow,jdbcType=REAL}, #{generalRateShow,jdbcType=REAL}, 
+      #{poorRateShow,jdbcType=REAL}, #{commentCount,jdbcType=INTEGER}, #{goodCount,jdbcType=INTEGER}, 
+      #{generalCount,jdbcType=INTEGER}, #{poorCount,jdbcType=INTEGER}, #{commentTableName,jdbcType=VARCHAR}, 
+      #{hotTag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xin.fallen.bean.ItemSummary01" >
+    insert into item_summary01
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="goodRateShow != null" >
+        good_rate_show,
+      </if>
+      <if test="generalRateShow != null" >
+        general_rate_show,
+      </if>
+      <if test="poorRateShow != null" >
+        poor_rate_show,
+      </if>
+      <if test="commentCount != null" >
+        comment_count,
+      </if>
+      <if test="goodCount != null" >
+        good_count,
+      </if>
+      <if test="generalCount != null" >
+        general_count,
+      </if>
+      <if test="poorCount != null" >
+        poor_count,
+      </if>
+      <if test="commentTableName != null" >
+        comment_table_name,
+      </if>
+      <if test="hotTag != null" >
+        hot_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodRateShow != null" >
+        #{goodRateShow,jdbcType=REAL},
+      </if>
+      <if test="generalRateShow != null" >
+        #{generalRateShow,jdbcType=REAL},
+      </if>
+      <if test="poorRateShow != null" >
+        #{poorRateShow,jdbcType=REAL},
+      </if>
+      <if test="commentCount != null" >
+        #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodCount != null" >
+        #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="generalCount != null" >
+        #{generalCount,jdbcType=INTEGER},
+      </if>
+      <if test="poorCount != null" >
+        #{poorCount,jdbcType=INTEGER},
+      </if>
+      <if test="commentTableName != null" >
+        #{commentTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotTag != null" >
+        #{hotTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.bean.ItemSummary01" >
+    update item_summary01
+    <set >
+      <if test="goodRateShow != null" >
+        good_rate_show = #{goodRateShow,jdbcType=REAL},
+      </if>
+      <if test="generalRateShow != null" >
+        general_rate_show = #{generalRateShow,jdbcType=REAL},
+      </if>
+      <if test="poorRateShow != null" >
+        poor_rate_show = #{poorRateShow,jdbcType=REAL},
+      </if>
+      <if test="commentCount != null" >
+        comment_count = #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodCount != null" >
+        good_count = #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="generalCount != null" >
+        general_count = #{generalCount,jdbcType=INTEGER},
+      </if>
+      <if test="poorCount != null" >
+        poor_count = #{poorCount,jdbcType=INTEGER},
+      </if>
+      <if test="commentTableName != null" >
+        comment_table_name = #{commentTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotTag != null" >
+        hot_tag = #{hotTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.fallen.bean.ItemSummary01" >
+    update item_summary01
+    set good_rate_show = #{goodRateShow,jdbcType=REAL},
+      general_rate_show = #{generalRateShow,jdbcType=REAL},
+      poor_rate_show = #{poorRateShow,jdbcType=REAL},
+      comment_count = #{commentCount,jdbcType=INTEGER},
+      good_count = #{goodCount,jdbcType=INTEGER},
+      general_count = #{generalCount,jdbcType=INTEGER},
+      poor_count = #{poorCount,jdbcType=INTEGER},
+      comment_table_name = #{commentTableName,jdbcType=VARCHAR},
+      hot_tag = #{hotTag,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+</mapper>
