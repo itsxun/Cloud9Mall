@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xin.fallen.dao.HefengCityCodeMapper">
+    <resultMap id="BaseResultMap" type="xin.fallen.po.HefengCityCode">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="city_zh" property="cityZh" jdbcType="VARCHAR"/>
+        <result column="province_zh" property="provinceZh" jdbcType="VARCHAR"/>
+        <result column="leader_zh" property="leaderZh" jdbcType="VARCHAR"/>
+        <result column="lat" property="lat" jdbcType="VARCHAR"/>
+        <result column="lon" property="lon" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, city_zh, province_zh, leader_zh, lat, lon
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from hefeng_city_code
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from hefeng_city_code
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="xin.fallen.po.HefengCityCode">
+    insert into hefeng_city_code (id, city_zh, province_zh, 
+      leader_zh, lat, lon)
+    values (#{id,jdbcType=VARCHAR}, #{cityZh,jdbcType=VARCHAR}, #{provinceZh,jdbcType=VARCHAR}, 
+      #{leaderZh,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{lon,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="xin.fallen.po.HefengCityCode">
+        insert into hefeng_city_code
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cityZh != null">
+                city_zh,
+            </if>
+            <if test="provinceZh != null">
+                province_zh,
+            </if>
+            <if test="leaderZh != null">
+                leader_zh,
+            </if>
+            <if test="lat != null">
+                lat,
+            </if>
+            <if test="lon != null">
+                lon,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="cityZh != null">
+                #{cityZh,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceZh != null">
+                #{provinceZh,jdbcType=VARCHAR},
+            </if>
+            <if test="leaderZh != null">
+                #{leaderZh,jdbcType=VARCHAR},
+            </if>
+            <if test="lat != null">
+                #{lat,jdbcType=VARCHAR},
+            </if>
+            <if test="lon != null">
+                #{lon,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.po.HefengCityCode">
+        update hefeng_city_code
+        <set>
+            <if test="cityZh != null">
+                city_zh = #{cityZh,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceZh != null">
+                province_zh = #{provinceZh,jdbcType=VARCHAR},
+            </if>
+            <if test="leaderZh != null">
+                leader_zh = #{leaderZh,jdbcType=VARCHAR},
+            </if>
+            <if test="lat != null">
+                lat = #{lat,jdbcType=VARCHAR},
+            </if>
+            <if test="lon != null">
+                lon = #{lon,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="xin.fallen.po.HefengCityCode">
+    update hefeng_city_code
+    set city_zh = #{cityZh,jdbcType=VARCHAR},
+      province_zh = #{provinceZh,jdbcType=VARCHAR},
+      leader_zh = #{leaderZh,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      lon = #{lon,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!--====================================自定义部分===================================================-->
+    <select id="selectPrimaryKeyByCityName" parameterType="String" resultType="String">
+      select id from hefeng_city_code where city_zh=#{cityName}
+    </select>
+</mapper>

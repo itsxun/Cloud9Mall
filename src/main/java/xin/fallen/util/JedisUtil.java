@@ -6,6 +6,7 @@ import redis.clients.jedis.JedisPool;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.util.Set;
 
 /**
  * Author: fallen
@@ -15,15 +16,7 @@ import javax.annotation.Resource;
  */
 public class JedisUtil {
 
-    private static JedisPool pool;
-
-    @Resource
-    private JedisPool jedisPool;
-
-    @PostConstruct
-    public void initPool() {
-        pool = jedisPool;
-    }
+    public static JedisPool pool;
 
     public Jedis getJedis() {
         return pool.getResource();
@@ -48,9 +41,21 @@ public class JedisUtil {
         return res;
     }
 
-    public static void reborn(String key, int len) {
-        Jedis jedis = pool.getResource();
-        jedis.expire(key, len);
-        jedis.close();
+    public static void TTLRefresh(String key, int len) {
+        if (key != null) {
+            Jedis jedis = pool.getResource();
+            jedis.expire(key, len);
+            jedis.close();
+        }
+    }
+
+    public static Set<String> FuzzySeach(String pattern) {
+        Set<String> keys = null;
+        if (pattern != null) {
+            Jedis jedis = pool.getResource();
+            keys = jedis.keys(pattern);
+            jedis.close();
+        }
+        return keys;
     }
 }

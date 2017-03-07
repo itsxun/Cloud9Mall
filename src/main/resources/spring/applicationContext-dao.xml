@@ -24,7 +24,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <!--配置mapper扫描包-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.xiaolan.dao"/>
+        <property name="basePackage" value="xin.fallen.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

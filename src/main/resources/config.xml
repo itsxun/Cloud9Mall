@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+    <!--WeatherNow addr-->
+    <weather_now_addr>
+        https://free-api.heweather.com/v5/now?city={CITY}&amp;key={KEY}
+    </weather_now_addr>
 
+    <weather_pre_addr>
+        https://free-api.heweather.com/v5/forecast?city={CITY}&amp;key={KEY}
+    </weather_pre_addr>
+
+    <ip_locate_addr>
+        http://ip.taobao.com/service/getIpInfo.php?ip={IP}
+    </ip_locate_addr>
 </config>

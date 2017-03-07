@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xin.fallen.dao.ItemDetailedMsg01Mapper" >
+  <resultMap id="BaseResultMap" type="xin.fallen.bean.ItemDetailedMsg01" >
+    <id column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="thumbnails" property="thumbnails" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="item_color" property="itemColor" jdbcType="VARCHAR" />
+    <result column="item_version" property="itemVersion" jdbcType="VARCHAR" />
+    <result column="item_info" property="itemInfo" jdbcType="VARCHAR" />
+    <result column="item_param" property="itemParam" jdbcType="VARCHAR" />
+    <result column="shop_ave_score" property="shopAveScore" jdbcType="VARCHAR" />
+    <result column="item_score" property="itemScore" jdbcType="VARCHAR" />
+    <result column="service_score" property="serviceScore" jdbcType="VARCHAR" />
+    <result column="logistics_score" property="logisticsScore" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    item_id, shop_name, thumbnails, brand, item_color, item_version, item_info, item_param, 
+    shop_ave_score, item_score, service_score, logistics_score
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from item_detailed_msg01
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from item_detailed_msg01
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="xin.fallen.bean.ItemDetailedMsg01" >
+    insert into item_detailed_msg01 (item_id, shop_name, thumbnails, 
+      brand, item_color, item_version, 
+      item_info, item_param, shop_ave_score, 
+      item_score, service_score, logistics_score
+      )
+    values (#{itemId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{thumbnails,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{itemColor,jdbcType=VARCHAR}, #{itemVersion,jdbcType=VARCHAR}, 
+      #{itemInfo,jdbcType=VARCHAR}, #{itemParam,jdbcType=VARCHAR}, #{shopAveScore,jdbcType=VARCHAR}, 
+      #{itemScore,jdbcType=VARCHAR}, #{serviceScore,jdbcType=VARCHAR}, #{logisticsScore,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="xin.fallen.bean.ItemDetailedMsg01" >
+    insert into item_detailed_msg01
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="shopName != null" >
+        shop_name,
+      </if>
+      <if test="thumbnails != null" >
+        thumbnails,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="itemColor != null" >
+        item_color,
+      </if>
+      <if test="itemVersion != null" >
+        item_version,
+      </if>
+      <if test="itemInfo != null" >
+        item_info,
+      </if>
+      <if test="itemParam != null" >
+        item_param,
+      </if>
+      <if test="shopAveScore != null" >
+        shop_ave_score,
+      </if>
+      <if test="itemScore != null" >
+        item_score,
+      </if>
+      <if test="serviceScore != null" >
+        service_score,
+      </if>
+      <if test="logisticsScore != null" >
+        logistics_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnails != null" >
+        #{thumbnails,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="itemColor != null" >
+        #{itemColor,jdbcType=VARCHAR},
+      </if>
+      <if test="itemVersion != null" >
+        #{itemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="itemInfo != null" >
+        #{itemInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemParam != null" >
+        #{itemParam,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAveScore != null" >
+        #{shopAveScore,jdbcType=VARCHAR},
+      </if>
+      <if test="itemScore != null" >
+        #{itemScore,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceScore != null" >
+        #{serviceScore,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsScore != null" >
+        #{logisticsScore,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.bean.ItemDetailedMsg01" >
+    update item_detailed_msg01
+    <set >
+      <if test="shopName != null" >
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnails != null" >
+        thumbnails = #{thumbnails,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="itemColor != null" >
+        item_color = #{itemColor,jdbcType=VARCHAR},
+      </if>
+      <if test="itemVersion != null" >
+        item_version = #{itemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="itemInfo != null" >
+        item_info = #{itemInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemParam != null" >
+        item_param = #{itemParam,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAveScore != null" >
+        shop_ave_score = #{shopAveScore,jdbcType=VARCHAR},
+      </if>
+      <if test="itemScore != null" >
+        item_score = #{itemScore,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceScore != null" >
+        service_score = #{serviceScore,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsScore != null" >
+        logistics_score = #{logisticsScore,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.fallen.bean.ItemDetailedMsg01" >
+    update item_detailed_msg01
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      thumbnails = #{thumbnails,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      item_color = #{itemColor,jdbcType=VARCHAR},
+      item_version = #{itemVersion,jdbcType=VARCHAR},
+      item_info = #{itemInfo,jdbcType=VARCHAR},
+      item_param = #{itemParam,jdbcType=VARCHAR},
+      shop_ave_score = #{shopAveScore,jdbcType=VARCHAR},
+      item_score = #{itemScore,jdbcType=VARCHAR},
+      service_score = #{serviceScore,jdbcType=VARCHAR},
+      logistics_score = #{logisticsScore,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+</mapper>

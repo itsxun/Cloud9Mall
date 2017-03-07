@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xin.fallen.dao.ItemSimpleMsg01Mapper" >
+  <resultMap id="BaseResultMap" type="xin.fallen.bean.ItemSimpleMsg01" >
+    <id column="RecordId" property="recordid" jdbcType="INTEGER" />
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="coarse_grained" property="coarseGrained" jdbcType="VARCHAR" />
+    <result column="fine_grained" property="fineGrained" jdbcType="VARCHAR" />
+    <result column="home_page" property="homePage" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="Thumbnail" property="thumbnail" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RecordId, item_id, coarse_grained, fine_grained, home_page, title, Thumbnail, price, 
+    comment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from item_simple_msg01
+    where RecordId = #{recordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from item_simple_msg01
+    where RecordId = #{recordid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="xin.fallen.bean.ItemSimpleMsg01" >
+    insert into item_simple_msg01 (RecordId, item_id, coarse_grained, 
+      fine_grained, home_page, title, 
+      Thumbnail, price, comment
+      )
+    values (#{recordid,jdbcType=INTEGER}, #{itemId,jdbcType=VARCHAR}, #{coarseGrained,jdbcType=VARCHAR}, 
+      #{fineGrained,jdbcType=VARCHAR}, #{homePage,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{thumbnail,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="xin.fallen.bean.ItemSimpleMsg01" >
+    insert into item_simple_msg01
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordid != null" >
+        RecordId,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="coarseGrained != null" >
+        coarse_grained,
+      </if>
+      <if test="fineGrained != null" >
+        fine_grained,
+      </if>
+      <if test="homePage != null" >
+        home_page,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="thumbnail != null" >
+        Thumbnail,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordid != null" >
+        #{recordid,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="coarseGrained != null" >
+        #{coarseGrained,jdbcType=VARCHAR},
+      </if>
+      <if test="fineGrained != null" >
+        #{fineGrained,jdbcType=VARCHAR},
+      </if>
+      <if test="homePage != null" >
+        #{homePage,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.bean.ItemSimpleMsg01" >
+    update item_simple_msg01
+    <set >
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="coarseGrained != null" >
+        coarse_grained = #{coarseGrained,jdbcType=VARCHAR},
+      </if>
+      <if test="fineGrained != null" >
+        fine_grained = #{fineGrained,jdbcType=VARCHAR},
+      </if>
+      <if test="homePage != null" >
+        home_page = #{homePage,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        Thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RecordId = #{recordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.fallen.bean.ItemSimpleMsg01" >
+    update item_simple_msg01
+    set item_id = #{itemId,jdbcType=VARCHAR},
+      coarse_grained = #{coarseGrained,jdbcType=VARCHAR},
+      fine_grained = #{fineGrained,jdbcType=VARCHAR},
+      home_page = #{homePage,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      Thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR}
+    where RecordId = #{recordid,jdbcType=INTEGER}
+  </update>
+</mapper>
