@@ -6,6 +6,11 @@ package xin.fallen.config;
  * Time: 下午4:34
  * Usage:
  */
-public class StaticConfig
-{
+public class StaticConfig {
+    public static String apiAddrNow;
+    public static String apiAddrPre;
+    public static String ipLocAddr;
+    public static int userAliveTime;
+    public static int adminAliveTime;
+
 }

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xin.fallen.dao.CnShopMapper" >
+  <resultMap id="BaseResultMap" type="xin.fallen.bean.CnShop" >
+    <id column="shop_id" property="shopId" jdbcType="VARCHAR" />
+    <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+    <result column="sells_type" property="sellsType" jdbcType="VARCHAR" />
+    <result column="legal_name" property="legalName" jdbcType="VARCHAR" />
+    <result column="legal_id" property="legalId" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="rank" property="rank" jdbcType="VARCHAR" />
+    <result column="shop_ave_score" property="shopAveScore" jdbcType="VARCHAR" />
+    <result column="service_score" property="serviceScore" jdbcType="VARCHAR" />
+    <result column="logistics_score" property="logisticsScore" jdbcType="VARCHAR" />
+    <result column="is_active" property="isActive" jdbcType="BIT" />
+    <result column="date_joined" property="dateJoined" jdbcType="DATE" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shop_id, shop_name, sells_type, legal_name, legal_id, address, avatar, rank, shop_ave_score, 
+    service_score, logistics_score, is_active, date_joined, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from shopAdmin_cnshop
+    where shop_id = #{shopId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from shopAdmin_cnshop
+    where shop_id = #{shopId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="xin.fallen.bean.CnShop" >
+    insert into shopAdmin_cnshop (shop_id, shop_name, sells_type, 
+      legal_name, legal_id, address, 
+      avatar, rank, shop_ave_score, 
+      service_score, logistics_score, is_active, 
+      date_joined, user_id)
+    values (#{shopId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{sellsType,jdbcType=VARCHAR}, 
+      #{legalName,jdbcType=VARCHAR}, #{legalId,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{rank,jdbcType=VARCHAR}, #{shopAveScore,jdbcType=VARCHAR}, 
+      #{serviceScore,jdbcType=VARCHAR}, #{logisticsScore,jdbcType=VARCHAR}, #{isActive,jdbcType=BIT}, 
+      #{dateJoined,jdbcType=DATE}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="xin.fallen.bean.CnShop" >
+    insert into shopAdmin_cnshop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="shopName != null" >
+        shop_name,
+      </if>
+      <if test="sellsType != null" >
+        sells_type,
+      </if>
+      <if test="legalName != null" >
+        legal_name,
+      </if>
+      <if test="legalId != null" >
+        legal_id,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="rank != null" >
+        rank,
+      </if>
+      <if test="shopAveScore != null" >
+        shop_ave_score,
+      </if>
+      <if test="serviceScore != null" >
+        service_score,
+      </if>
+      <if test="logisticsScore != null" >
+        logistics_score,
+      </if>
+      <if test="isActive != null" >
+        is_active,
+      </if>
+      <if test="dateJoined != null" >
+        date_joined,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellsType != null" >
+        #{sellsType,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null" >
+        #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalId != null" >
+        #{legalId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null" >
+        #{rank,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAveScore != null" >
+        #{shopAveScore,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceScore != null" >
+        #{serviceScore,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsScore != null" >
+        #{logisticsScore,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=BIT},
+      </if>
+      <if test="dateJoined != null" >
+        #{dateJoined,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.bean.CnShop" >
+    update shopAdmin_cnshop
+    <set >
+      <if test="shopName != null" >
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellsType != null" >
+        sells_type = #{sellsType,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null" >
+        legal_name = #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalId != null" >
+        legal_id = #{legalId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null" >
+        rank = #{rank,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAveScore != null" >
+        shop_ave_score = #{shopAveScore,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceScore != null" >
+        service_score = #{serviceScore,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsScore != null" >
+        logistics_score = #{logisticsScore,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null" >
+        is_active = #{isActive,jdbcType=BIT},
+      </if>
+      <if test="dateJoined != null" >
+        date_joined = #{dateJoined,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.fallen.bean.CnShop" >
+    update shopAdmin_cnshop
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      sells_type = #{sellsType,jdbcType=VARCHAR},
+      legal_name = #{legalName,jdbcType=VARCHAR},
+      legal_id = #{legalId,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=VARCHAR},
+      shop_ave_score = #{shopAveScore,jdbcType=VARCHAR},
+      service_score = #{serviceScore,jdbcType=VARCHAR},
+      logistics_score = #{logisticsScore,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=BIT},
+      date_joined = #{dateJoined,jdbcType=DATE},
+      user_id = #{userId,jdbcType=INTEGER}
+    where shop_id = #{shopId,jdbcType=VARCHAR}
+  </update>
+</mapper>

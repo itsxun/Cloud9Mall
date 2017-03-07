@@ -27,8 +27,21 @@ public class UserIdentityCtrl {
     @RequestMapping("/login")
     public JsonResult userLogin(String username, String password) {
         String token = userIdentitySerImpl.userLogin(username, password);
-        return JsonResultUtil.resDispatcher(token);
+        return JsonResultUtil.resDispatcher("登陆成功", "登录失败", token);
     }
 
+    @RequestMapping("/regist")
+    public JsonResult userRegist(CnUser user) {
+        Integer userId = userIdentitySerImpl.userRegist(user);
+        return JsonResultUtil.resDispatcher(userId);
+    }
+
+    @RequestMapping("/email_verify")
+    public JsonResult userEmailVerify(String email) {
+        if (!userIdentitySerImpl.isEmailExists(email)) {
+            return JsonResultUtil.resDispatcher(0);
+        }
+        return null;
+    }
 
 }

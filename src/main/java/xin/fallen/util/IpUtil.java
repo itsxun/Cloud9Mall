@@ -1,6 +1,7 @@
 package xin.fallen.util;
 
 import com.google.gson.Gson;
+import xin.fallen.config.StaticConfig;
 import xin.fallen.po.IpLocMsg;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
  * Usage:根据request获取ip地址
  */
 public class IpUtil {
-    public static String ipLocAddr;
 
     public static String getIpAddr(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
@@ -29,7 +29,7 @@ public class IpUtil {
     }
 
     public static IpLocMsg getLocByIp(String ip) {
-        String res = HttpUtil.get(ipLocAddr.replace("{IP}", ip));
+        String res = HttpUtil.get(StaticConfig.ipLocAddr.replace("{IP}", ip));
         return new Gson().fromJson(res, IpLocMsg.class);
     }
 }

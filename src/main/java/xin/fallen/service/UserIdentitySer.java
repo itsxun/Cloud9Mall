@@ -10,7 +10,11 @@ import xin.fallen.bean.CnUser;
  */
 public interface UserIdentitySer {
 
-    String userLogin(String username,String password);
+    String userLogin(String username, String password);
+
+    Integer userRegist(CnUser user);
 
     void userLogout(String username);
+
+    boolean isEmailExists(String email);
 }

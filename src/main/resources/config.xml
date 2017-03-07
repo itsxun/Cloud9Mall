@@ -12,4 +12,16 @@
     <ip_locate_addr>
         http://ip.taobao.com/service/getIpInfo.php?ip={IP}
     </ip_locate_addr>
+
+    <!--用户状态失效时间，单位：秒-->
+    <user_alive_time>
+        1200
+    </user_alive_time>
+
+    <!--管理员状态失效时间-->
+    <admin_alive_time>
+        600
+    </admin_alive_time>
+
+
 </config>

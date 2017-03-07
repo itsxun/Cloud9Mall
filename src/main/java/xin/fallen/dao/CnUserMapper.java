@@ -17,4 +17,6 @@ public interface CnUserMapper {
     int updateByPrimaryKey(CnUser record);
 
     Integer selectPrimaryKeyForLogin(@Param("username") String username, @Param("password") String password);
+
+    Integer selectEmailIfExist(String email);
 }
