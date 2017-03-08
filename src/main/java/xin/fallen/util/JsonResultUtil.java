@@ -22,6 +22,14 @@ public class JsonResultUtil {
         return status == 0 ? getFailRes() : getSuccessRes();
     }
 
+    public static JsonResult resDispatcher(boolean status) {
+        return status ? getSuccessRes() : getFailRes();
+    }
+
+    public static JsonResult resDispatcher(String successMsg, String failMsg, int status) {
+        return status == 0 ? getFailRes(failMsg) : getSuccessRes(successMsg);
+    }
+
     private static JsonResult getSuccessRes(String msg, Object data) {
         JsonResult jr = new JsonResult();
         jr.setRes("1");

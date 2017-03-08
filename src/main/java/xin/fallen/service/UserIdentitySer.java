@@ -17,4 +17,8 @@ public interface UserIdentitySer {
     void userLogout(String username);
 
     boolean isEmailExists(String email);
+
+    boolean userEmailSend(String email);
+
+    boolean userEmailVerify(String email, String captcha);
 }

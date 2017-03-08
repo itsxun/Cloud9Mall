@@ -18,10 +18,64 @@
         1200
     </user_alive_time>
 
+    <!--邮箱正则表达式-->
+    <email_regex>
+        (?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])
+    </email_regex>
+
     <!--管理员状态失效时间-->
     <admin_alive_time>
         600
     </admin_alive_time>
 
+    <!--官方邮箱-->
+    <offcial_mailbox_addr>
+        cloud9mall@163.com
+    </offcial_mailbox_addr>
 
+    <!--官方邮箱发送方-->
+    <official_email_sender>
+        cloud9mall@163.com
+    </official_email_sender>
+
+    <!--注册邮件主题-->
+    <regist_email_subject>
+        Cloud Nine邮箱验证
+    </regist_email_subject>
+
+    <!--注册邮件过期时间，单位秒-->
+    <regist_email_time_out>
+        600
+    </regist_email_time_out>
+
+    <!--注册邮件内容-->
+    <regist_email_content>
+        尊敬的用户：
+        <br/>
+        您好！
+        <br/>
+        这里是您的邮箱验证码：
+        <h1>{CAPTCHA}</h1>
+        <h3>验证码有效时间为10分钟，请尽快完成验证。</h3>
+        请以最新的激活邮件为准。
+        <br/>
+        <br/>
+        -----------------------------------------<br/>此邮箱为Cloud Nine站点系统邮箱，不接收邮件，请勿回复。
+        <br/>
+    </regist_email_content>
+
+    <!--redis中待验证邮箱的集合Map名称-->
+    <regist_email_verify_map_name>
+        REGIST_EMAIL_VERIFY_MAP
+    </regist_email_verify_map_name>
+
+    <!--redis中在线用户的集合Map名称-->
+    <online_user_map_name>
+        ONLINE_USER_MAP
+    </online_user_map_name>
+
+    <!--redis中在线的管理员的集合Map名称-->
+    <online_admin_map_name>
+        ONLINE_ADMIN_MAP
+    </online_admin_map_name>
 </config>

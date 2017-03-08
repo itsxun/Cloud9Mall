@@ -6,6 +6,7 @@ import redis.clients.jedis.JedisPool;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,16 +23,18 @@ public class JedisUtil {
         return pool.getResource();
     }
 
-    public static void setValue(String key, String value) {
+    public static boolean setValue(String key, String value) {
         Jedis jedis = pool.getResource();
-        jedis.set(key, value);
+        String res = jedis.set(key, value);
         jedis.close();
+        return res == null;
     }
 
-    public static void setValue(String key, String value, int len) {
+    public static boolean setValue(String key, String value, int len) {
         Jedis jedis = pool.getResource();
-        jedis.setex(key, len, value);
+        String res = jedis.setex(key, len, value);
         jedis.close();
+        return res == null;
     }
 
     public static String getValue(String key) {
@@ -41,21 +44,67 @@ public class JedisUtil {
         return res;
     }
 
-    public static void TTLRefresh(String key, int len) {
-        if (key != null) {
-            Jedis jedis = pool.getResource();
-            jedis.expire(key, len);
-            jedis.close();
-        }
+    public static boolean TTLRefresh(String key, int len) {
+        Jedis jedis = pool.getResource();
+        Long res = jedis.expire(key, len);
+        jedis.close();
+        return res == null;
     }
 
     public static Set<String> FuzzySeach(String pattern) {
         Set<String> keys = null;
-        if (pattern != null) {
-            Jedis jedis = pool.getResource();
-            keys = jedis.keys(pattern);
-            jedis.close();
-        }
+        Jedis jedis = pool.getResource();
+        keys = jedis.keys(pattern);
+        jedis.close();
         return keys;
+    }
+
+    public static boolean addToSet(String key, String setName) {
+        Jedis jedis = pool.getResource();
+        Long res = jedis.sadd(key, setName);
+        jedis.close();
+        return res > 0;
+    }
+
+    public static boolean removeFromSet(String key, String setName) {
+        Jedis jedis = pool.getResource();
+        Long res = jedis.srem(key, setName);
+        jedis.close();
+        return res > 0;
+    }
+
+    public static boolean isInSet(String key, String setName) {
+        Jedis jedis = pool.getResource();
+        boolean flag = jedis.sismember(key, setName);
+        jedis.close();
+        return flag;
+    }
+
+    public static Set<String> getSet(String setName) {
+        Jedis jedis = pool.getResource();
+        Set<String> set = jedis.smembers(setName);
+        jedis.close();
+        return set;
+    }
+
+    public static boolean addToMap(String mapName, String key, String value) {
+        Jedis jedis = pool.getResource();
+        Long res = jedis.hset(mapName, key, value);
+        jedis.close();
+        return res > 0;
+    }
+
+    public static String getFromMap(String key, String mapName) {
+        Jedis jedis = pool.getResource();
+        String value = jedis.hget(mapName, key);
+        jedis.close();
+        return value;
+    }
+
+    public static boolean delFromMap(String mapName, String key) {
+        Jedis jedis = pool.getResource();
+        Long res = jedis.hdel(mapName, key);
+        jedis.close();
+        return res > 0;
     }
 }
