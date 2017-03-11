@@ -1,6 +1,5 @@
 package xin.fallen.dao;
 
-import org.apache.ibatis.annotations.Param;
 import xin.fallen.bean.CnUser;
 
 public interface CnUserMapper {
@@ -16,7 +15,10 @@ public interface CnUserMapper {
 
     int updateByPrimaryKey(CnUser record);
 
-    Integer selectPrimaryKeyForLogin(@Param("username") String username, @Param("password") String password);
-
     Integer selectEmailIfExist(String email);
+
+    String selectUsernameIfExist(String email);
+
+    Integer selectPrimaryKeyForLogin(String username, String password);
+
 }

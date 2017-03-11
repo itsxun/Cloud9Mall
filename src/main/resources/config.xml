@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+
+    <!--用到的jedis库的数量-->
+    <jedis_pool_num>
+        2
+    </jedis_pool_num>
+
     <!--WeatherNow addr-->
     <weather_now_addr>
         https://free-api.heweather.com/v5/now?city={CITY}&amp;key={KEY}

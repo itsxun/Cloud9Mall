@@ -1,24 +1,23 @@
 package xin.fallen.po;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Author: Fallen
  * Date: 2017/3/8
- * Time: 17:46
+ * Time: 22:54
  * Usage:
  */
-public class EmailVerify implements Serializable {
-    private String captcha;
+public class CnUserOnLine {
+    private int userId;
     private Date timeStamp;
 
-    public String getCaptcha() {
-        return captcha;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCaptcha(String captcha) {
-        this.captcha = captcha;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public Date getTimeStamp() {
@@ -28,5 +27,4 @@ public class EmailVerify implements Serializable {
     public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
-
 }

@@ -35,6 +35,8 @@ public class CnUser {
 
     private String rank;
 
+    private String salt;
+
     public Integer getId() {
         return id;
     }
@@ -161,5 +163,13 @@ public class CnUser {
 
     public void setRank(String rank) {
         this.rank = rank == null ? null : rank.trim();
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
     }
 }

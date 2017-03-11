@@ -1,6 +1,7 @@
 package xin.fallen.service;
 
 import xin.fallen.bean.CnUser;
+import xin.fallen.vo.JsonResult;
 
 /**
  * Author: Fallen
@@ -10,15 +11,17 @@ import xin.fallen.bean.CnUser;
  */
 public interface UserIdentitySer {
 
-    String userLogin(String username, String password);
+    JsonResult userLogin(String username, String password);
 
-    Integer userRegist(CnUser user);
+    JsonResult userRegist(CnUser user);
 
-    void userLogout(String username);
+    JsonResult userLogout(String username);
 
-    boolean isEmailExists(String email);
+    JsonResult isEmailExists(String email);
 
-    boolean userEmailSend(String email);
+    JsonResult isUsernameExists(String username);
 
-    boolean userEmailVerify(String email, String captcha);
+    JsonResult userEmailSend(String email);
+
+    JsonResult userEmailVerify(String email, String captcha);
 }

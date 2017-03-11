@@ -18,10 +18,11 @@
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
         <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
         <result column="rank" property="rank" jdbcType="VARCHAR"/>
+        <result column="salt" property="salt" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
     id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, 
-    is_active, date_joined, birthday, gender, phone, avatar, rank
+    is_active, date_joined, birthday, gender, phone, avatar, rank, salt
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -30,7 +31,7 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    update userAdmin_cnuser set is_active = 0
+    delete from userAdmin_cnuser
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="xin.fallen.bean.CnUser">
@@ -39,18 +40,15 @@
       last_name, email, is_staff, 
       is_active, date_joined, birthday, 
       gender, phone, avatar, 
-      rank)
+      rank, salt)
     values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP}, 
       #{isSuperuser,jdbcType=BIT}, #{username,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
       #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{isStaff,jdbcType=BIT}, 
       #{isActive,jdbcType=BIT}, #{dateJoined,jdbcType=TIMESTAMP}, #{birthday,jdbcType=DATE}, 
       #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{rank,jdbcType=VARCHAR})
+      #{rank,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="xin.fallen.bean.CnUser">
-        <selectKey keyProperty="id" order="AFTER" resultType="Integer">
-            select last_insert_id()
-        </selectKey>
         insert into userAdmin_cnuser
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -100,6 +98,9 @@
             </if>
             <if test="rank != null">
                 rank,
+            </if>
+            <if test="salt != null">
+                salt,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -151,6 +152,9 @@
             <if test="rank != null">
                 #{rank,jdbcType=VARCHAR},
             </if>
+            <if test="salt != null">
+                #{salt,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="xin.fallen.bean.CnUser">
@@ -201,6 +205,9 @@
             <if test="rank != null">
                 rank = #{rank,jdbcType=VARCHAR},
             </if>
+            <if test="salt != null">
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -220,17 +227,21 @@
       gender = #{gender,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
-      rank = #{rank,jdbcType=VARCHAR}
+      rank = #{rank,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
     <!--=========================================自定义部分================================================-->
 
     <select id="selectPrimaryKeyForLogin" resultType="Integer" parameterType="String">
-        select id from userAdmin_cnuser where (username=#{username} or email=#{username}) and password=#{password}
-    </select>
+    select id from userAdmin_cnuser where (username=#{username} or email=#{username}) and password=#{password}
+  </select>
 
     <select id="selectEmailIfExist" resultType="Integer" parameterType="String">
-        select count(0) from userAdmin_cnuser where email=#{email}
-    </select>
+    select count(0) from userAdmin_cnuser where email=#{email}
+  </select>
+    <select id="selectUsernameIfExist" resultType="Integer" parameterType="String">
+     select count(0) from userAdmin_cnuser where username=#{username}
+  </select>
 </mapper>

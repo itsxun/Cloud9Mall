@@ -30,6 +30,10 @@ public class JsonResultUtil {
         return status == 0 ? getFailRes(failMsg) : getSuccessRes(successMsg);
     }
 
+    public static JsonResult resDispatcher(String msg, int status) {
+        return status == 0 ? getFailRes(msg) : getSuccessRes(msg);
+    }
+
     private static JsonResult getSuccessRes(String msg, Object data) {
         JsonResult jr = new JsonResult();
         jr.setRes("1");

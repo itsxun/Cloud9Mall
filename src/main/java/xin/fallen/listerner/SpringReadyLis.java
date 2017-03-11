@@ -1,14 +1,13 @@
 package xin.fallen.listerner;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import redis.clients.jedis.JedisPool;
 import xin.fallen.config.StaticConfig;
 import xin.fallen.util.ConfigReader;
-import xin.fallen.util.HeFengWetUtil;
-import xin.fallen.util.IpUtil;
 import xin.fallen.util.JedisUtil;
+
+import java.util.ArrayList;
 
 /**
  * Author: fallen
@@ -34,6 +33,9 @@ public class SpringReadyLis implements ApplicationListener<ContextRefreshedEvent
         StaticConfig.onlineUserMapName = ConfigReader.getValue("online_user_map_name");
         StaticConfig.onlineAdminMapName = ConfigReader.getValue("online_admin_map_name");
         StaticConfig.registEmailTimeOut = Integer.parseInt(ConfigReader.getValue("regist_email_time_out"));
-        JedisUtil.pool = (JedisPool) e.getApplicationContext().getBean("jedisPool");
+        int poolNum = Integer.parseInt(ConfigReader.getValue("jedis_pool_num"));
+        JedisUtil.pools = new ArrayList<JedisPool>(poolNum);
+        JedisUtil.pools.add((JedisPool) e.getApplicationContext().getBean("jedisPool1"));
+        JedisUtil.pools.add((JedisPool) e.getApplicationContext().getBean("jedisPool2"));
     }
 }
